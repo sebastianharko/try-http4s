@@ -11,7 +11,7 @@ object Main extends App {
       Ok("pong")
   }
 
-  BlazeBuilder.bindHttp(8080, "0.0.0.0")
+  BlazeBuilder.bindHttp(8080, sys.env("POD_IP"))
       .mountService(service, "/")
       .run
       .awaitShutdown()
